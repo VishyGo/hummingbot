@@ -51,6 +51,7 @@ order_levels: 4  # Number of levels of orders to place on each side
 order_level_amount: 0  # Same size for all orders
 order_level_spread: 1.0
 
+
 # Order Execution Delay
 filled_order_delay: 90  # Time limit in minutes
 
@@ -70,6 +71,7 @@ price_source_derivative:
 price_source_market:
 price_source_custom_api:
 custom_api_update_interval: 5.0
+
 
 
 # Take Profit Order Type
