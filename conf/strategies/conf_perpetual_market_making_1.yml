@@ -12,7 +12,7 @@ derivative: hyperliquid_perpetual
 market: BTC-USD
 
 # Leverage to be used
-leverage: 3
+leverage: 1
 
 # Position mode to use
 position_mode: Hedge
@@ -71,16 +71,6 @@ price_source_market:
 price_source_custom_api:
 custom_api_update_interval: 5.0
 
-# Order Overrides
-order_override:
-  buy_level_1: [buy, 0.15, 22.00]
-  buy_level_2: [buy, 0.20, 16.39]
-  buy_level_3: [buy, 0.50, 13.40]
-  buy_level_4: [buy, 1.00, 9.18]
-  sell_level_1: [sell, 0.15, 16.39]
-  sell_level_2: [sell, 0.20, 13.40]
-  sell_level_3: [sell, 0.50, 11.18]
-  sell_level_4: [sell, 1.00, 7.45]
 
 # Take Profit Order Type
 take_profit_order_type: OrderType.LIMIT
