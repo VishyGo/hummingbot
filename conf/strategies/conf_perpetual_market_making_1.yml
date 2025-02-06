@@ -1,78 +1,48 @@
-########################################################
-###       Perpetual market making strategy config       ###
-########################################################
+# Exchange Settings
+exchange: hyperliquid_perpetual # Using Hyperliquid for perpetual futures
 
-template_version: 6
-strategy: perpetual_market_making
+# Trading Pair
+market: BTC-USD # Trading BTC perpetual contract in USD terms
 
-# Derivative and token parameters.
-derivative: hyperliquid_perpetual
+# Order Size
+order_amount: 0.0001 # 10% of total BTC balance per order
 
-# Token trading pair for the exchange.
-market: BTC-USD
+# Order Spread (Bid & Ask)
+bid_spread: 0.3 # 0.3% below best bid
+ask_spread: 0.3 # 0.3% above best ask
 
-# Leverage to be used
-leverage: 1
+# Order Refresh Time
+order_refresh_time: 10 # Refresh orders every 10 seconds
 
-# Position mode to use
-position_mode: Hedge
+# Maximum Order Age
+max_order_age: 60 # Cancel and replace orders after 60 seconds
 
-# Spread configurations
-bid_spread: 0.15
-ask_spread: 1.00
+# Order Levels
+order_levels: 1 # Single order at bid and ask levels
 
-# Minimum Spread
-minimum_spread: 0.05
+# Order Level Spacing
+order_level_spread: 0.5 # If using multiple levels, each spaced by 0.5%
 
-# Time in seconds before cancelling and placing new orders
-order_refresh_time: 45.0  # 0.75 minutes
+# Inventory Skew Settings
+inventory_skew_enabled: true # Adjust order sizes based on holdings
+inventory_target_base_pct: 50 # Maintain 50% BTC allocation
 
-# Order refresh tolerance
-order_refresh_tolerance_pct: 0.0
+# Ping Pong Mode
+ping_pong_enabled: true # Alternate buy and sell orders
 
-# Order amount distribution
-order_amount: 22.00  # First buy level amount
+# Leverage Settings (For Derivatives)
+leverage: 3 # Using 3x leverage (adjust as per risk tolerance)
+position_mode: one-way # One-way mode (single position direction)
 
-# Risk Management
-stop_loss_spread: 1.20
-long_profit_taking_spread: 1.50
-short_profit_taking_spread: 1.50
+# Funding Rate Protection (Optional)
+funding_fee_buffer: 0.002 # Avoid negative funding rate trades
 
-# Stop Loss Parameters
-time_between_stop_loss_orders: 300.0  # 5 minutes
-stop_loss_slippage_buffer: 0.50
+# Trade Fill Behavior
+filled_order_delay: 5 # Wait 5 seconds after an order is filled before placing new orders
 
-# Price Band
-price_ceiling: -1.0
-price_floor: -1.0
+# Order Book Depth Consideration
+order_book_depth_factor: 5 # Ensures orders are placed in a liquid part of the order book
 
-# Order Levels (Executors Distribution)
-order_levels: 4  # Number of levels of orders to place on each side
-order_level_amount: 0  # Same size for all orders
-order_level_spread: 1.0
+# Stop Loss (Manual, Not Hummingbot Setting)
+stop_loss: 2 # Exit if the price drops 2% against your position
 
-
-# Order Execution Delay
-filled_order_delay: 90  # Time limit in minutes
-
-# Dynamic Configuration (Trend Sensitivity)
-macd_fast_period: 9
-macd_slow_period: 25
-macd_signal_period: 6
-natr_length: 8
-
-# Executor Refresh Time
-executor_refresh_time: 45.0  # 0.75 minutes
-
-# Price Source Configuration
-price_source: current_market
-price_type: mid_price
-price_source_derivative:
-price_source_market:
-price_source_custom_api:
-custom_api_update_interval: 5.0
-
-
-
-# Take Profit Order Type
-take_profit_order_type: OrderType.LIMIT
